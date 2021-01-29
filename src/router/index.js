@@ -96,6 +96,18 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/web/user',
+    component: Layout,
+    meta: { title: 'web用户', icon: 'user' },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/web/user/index'),
+        meta: { title: 'web用户', icon: 'user' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
