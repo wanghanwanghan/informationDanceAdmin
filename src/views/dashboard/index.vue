@@ -1,33 +1,46 @@
 <template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  name: '',
+  components: {},
+  // filters: {},
+  props: {},
+  // provide() {
+  //   return {}
+  // },
+  data() {
+    return {}
   },
+  // inject: [],
+  computed: {},
+  // watch: {},
   mounted() {
-    console.log(this.$route.params)
-  }
+  },
+  // beforeCreate() {
+  // },
+  // created() {
+  // },
+  // beforeMount() {
+  // },
+  // beforeUpdate() {
+  // },
+  // updated() {
+  // },
+  // beforeDestroy() {
+  // },
+  // destroyed() {
+  // },
+  // activated() {
+  // },
+  // deactivated() {
+  // },
+  methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
-  }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
-  }
-}
+
 </style>
