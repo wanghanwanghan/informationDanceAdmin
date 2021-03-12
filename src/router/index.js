@@ -104,7 +104,12 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/web/user/index'),
-        meta: { title: 'web用户', icon: 'user' }
+        meta: { title: '用户列表', icon: 'user' }
+      },
+      {
+        path: 'authBook',
+        component: () => import('@/views/web/authBook/index'),
+        meta: { title: '查看授权', icon: 'user' }
       }
     ]
   },
