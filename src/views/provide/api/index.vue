@@ -56,7 +56,7 @@
       <el-table-column prop="path" label="地址" width="350"></el-table-column>
       <el-table-column prop="name" label="名称" width="250"></el-table-column>
       <el-table-column prop="desc" label="描述" width="200"></el-table-column>
-      <el-table-column prop="source" label="数据源" width="100"></el-table-column>
+<!--      <el-table-column prop="source" label="数据源" width="100"></el-table-column>-->
       <el-table-column prop="price" label="成本（元）" width="100"></el-table-column>
       <el-table-column prop="status" label="状态" width="65"></el-table-column>
       <el-table-column prop="apiDoc" label="文档" width="65">
