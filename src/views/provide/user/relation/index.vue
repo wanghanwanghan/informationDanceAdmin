@@ -19,7 +19,7 @@
       <el-table-column prop="desc" label="描述"></el-table-column>
       <el-table-column prop="price" label="成本价" width="100"></el-table-column>
       <el-table-column prop="custPrice" label="用户价" width="100"></el-table-column>
-      <el-table-column prop="source" label="数据源" width="100"></el-table-column>
+<!--      <el-table-column prop="source" label="数据源" width="100"></el-table-column>-->
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click.stop="handleEdit(scope.row)">编辑</el-button>

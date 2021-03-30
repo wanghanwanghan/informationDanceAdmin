@@ -16,7 +16,7 @@
       <el-table-column prop="path" label="路径" width="400"></el-table-column>
       <el-table-column prop="name" label="名称"></el-table-column>
       <el-table-column prop="desc" label="描述"></el-table-column>
-      <el-table-column prop="source" label="数据源"></el-table-column>
+<!--      <el-table-column prop="source" label="数据源"></el-table-column>-->
     </el-table>
   </div>
 </template>
