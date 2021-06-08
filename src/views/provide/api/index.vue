@@ -22,6 +22,7 @@
               <el-option label="乾启" value="乾启"></el-option>
               <el-option label="信动" value="信动"></el-option>
               <el-option label="元素" value="元素"></el-option>
+              <el-option label="众望" value="众望"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="成本（元）" :label-width="formLabelWidth">
