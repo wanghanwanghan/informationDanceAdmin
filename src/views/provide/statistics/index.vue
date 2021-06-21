@@ -53,7 +53,7 @@
     <el-dialog
       title="提示"
       :visible="dialogVisible"
-      width="30%"
+      width="50%"
       :before-close="handleClose">
       <span>
         <json-viewer :value="jsonData" :expand-depth=10 copyable sort></json-viewer>
