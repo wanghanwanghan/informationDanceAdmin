@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row>
-      <el-button type="text" @click="dialogFormVisible = true" class="addUserBtn-class">添加用户</el-button>
+      <el-button type="text" @click="handleClickAddUser" class="addUserBtn-class">添加用户</el-button>
       <el-dialog title="添加用户" :visible.sync="dialogFormVisible">
         <el-form :model="form">
           <el-form-item label="公司/用户名称" :label-width="formLabelWidth">
@@ -61,6 +61,8 @@ export default {
       tableData: [],
       dialogFormVisible: false,
       form: {
+        actionType: 'insert',
+        user_id: '',
         username: '',
         money: ''
       },
@@ -71,47 +73,21 @@ export default {
   computed: {},
   // watch: {},
   mounted() {
-    this.$http.post('admin_provide/v1/user/getUserList', {}).then(({
-      data: res
-    }) => {
-      if (res.code === 200) {
-        this.$message({
-          type: 'success',
-          message: '操作成功!'
-        })
-        this.tableData = this.handleUserInfo(res.result)
-      } else {
-        this.$message({
-          type: 'error',
-          message: res.msg
-        })
-      }
-    }).catch((err) => {
-      console.error(err)
-    })
+    this.getUserData()
   },
-  // beforeCreate() {
-  // },
-  // created() {
-  // },
-  // beforeMount() {
-  // },
-  // beforeUpdate() {
-  // },
-  // updated() {
-  // },
-  // beforeDestroy() {
-  // },
-  // destroyed() {
-  // },
-  // activated() {
-  // },
-  // deactivated() {
-  // },
   methods: {
+    handleClickAddUser() {
+      this.form.actionType = 'insert'
+      this.form.username = ''
+      this.form.money = ''
+      this.dialogFormVisible = true
+    },
     handleEdit(index, rowObj) {
-      let uid = rowObj.id
-      alert(uid)
+      this.form.actionType = 'update'
+      this.form.user_id = rowObj.id
+      this.form.username = rowObj.username
+      this.form.money = rowObj.money
+      this.dialogFormVisible = true
     },
     handleUserInfo(rel) {
       rel.forEach(item => {
@@ -123,6 +99,8 @@ export default {
     },
     handleAddUser() {
       let obj = {
+        'actionType': this.form.actionType,
+        'user_id': this.form.user_id,
         'username': this.form.username,
         'money': this.form.money
       }
@@ -134,6 +112,7 @@ export default {
             type: 'success',
             message: '操作成功!'
           })
+          this.getUserData()
         } else {
           this.$message({
             type: 'error',
@@ -144,6 +123,26 @@ export default {
         console.error(err)
       })
       this.dialogFormVisible = false
+    },
+    getUserData() {
+      this.$http.post('admin_provide/v1/user/getUserList', {}).then(({
+        data: res
+      }) => {
+        if (res.code === 200) {
+          this.$message({
+            type: 'success',
+            message: '操作成功!'
+          })
+          this.tableData = this.handleUserInfo(res.result)
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.msg
+          })
+        }
+      }).catch((err) => {
+        console.error(err)
+      })
     }
   }
 }
