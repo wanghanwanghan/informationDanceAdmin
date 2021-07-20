@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row>
-      <el-button type="text" @click="dialogFormVisible = true" class="addUserBtn-class">添加用户</el-button>
+      <el-button type="text" @click="handleClickAddUser" class="addUserBtn-class">添加用户</el-button>
       <el-dialog title="添加用户" :visible.sync="dialogFormVisible">
         <el-form :model="form">
           <el-form-item label="手机号" :label-width="formLabelWidth">
@@ -66,6 +66,7 @@ import { parseTime } from '@/utils'
 
 export default {
   name: '',
+  inject: ['reload'],
   components: {},
   // filters: {},
   props: {},
@@ -77,6 +78,7 @@ export default {
       tableData: [],
       dialogFormVisible: false,
       form: {
+        actionType: 'insert',
         phone: '',
         username: '',
         password: '',
@@ -88,53 +90,33 @@ export default {
       formLabelWidth: '120px'
     }
   },
-  // inject: [],
   computed: {},
   // watch: {},
   mounted() {
-    let obj = {
-      page: 1,
-      pageSize: 10000
-    }
-    this.$http.post('admin/v1/user/list', obj).then(({
-      data: res
-    }) => {
-      if (res.code === 200) {
-        this.$message({
-          type: 'success',
-          message: '操作成功!'
-        })
-        this.tableData = this.handleUserInfo(res.result)
-      } else {
-        this.$message({
-          type: 'error',
-          message: res.msg
-        })
-      }
-    }).catch((err) => {
-      console.error(err)
-    })
+    this.getUserData()
   },
-  // beforeCreate() {
-  // },
-  // created() {
-  // },
-  // beforeMount() {
-  // },
-  // beforeUpdate() {
-  // },
-  // updated() {
-  // },
-  // beforeDestroy() {
-  // },
-  // destroyed() {
-  // },
-  // activated() {
-  // },
-  // deactivated() {
-  // },
   methods: {
+    handleClickAddUser() {
+      this.form.actionType = 'insert'
+      this.form.phone = ''
+      this.form.username = ''
+      this.form.password = ''
+      this.form.company = ''
+      this.form.email = ''
+      this.form.money = ''
+      this.form.created_at = ''
+      this.dialogFormVisible = true
+    },
     handleEdit(index, rowObj) {
+      this.form.actionType = 'update'
+      this.form.phone = rowObj.phone
+      this.form.username = rowObj.username
+      this.form.password = rowObj.password
+      this.form.company = rowObj.company
+      this.form.email = rowObj.email
+      this.form.money = rowObj.money
+      this.form.created_at = rowObj.created_at
+      this.dialogFormVisible = true
     },
     handleUserInfo(rel) {
       rel.forEach(item => {
@@ -145,6 +127,7 @@ export default {
     },
     handleAddUser() {
       let obj = {
+        'actionType': this.form.actionType,
         'phone': this.form.phone,
         'username': this.form.username,
         'password': this.form.password,
@@ -161,6 +144,7 @@ export default {
             type: 'success',
             message: '操作成功!'
           })
+          this.getUserData()
         } else {
           this.$message({
             type: 'error',
@@ -171,6 +155,30 @@ export default {
         console.error(err)
       })
       this.dialogFormVisible = false
+    },
+    getUserData() {
+      let obj = {
+        page: 1,
+        pageSize: 10000
+      }
+      this.$http.post('admin/v1/user/list', obj).then(({
+        data: res
+      }) => {
+        if (res.code === 200) {
+          this.$message({
+            type: 'success',
+            message: '操作成功!'
+          })
+          this.tableData = this.handleUserInfo(res.result)
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.msg
+          })
+        }
+      }).catch((err) => {
+        console.error(err)
+      })
     }
   }
 }

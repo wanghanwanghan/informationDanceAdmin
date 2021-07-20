@@ -110,6 +110,8 @@ export default {
   // },
   methods: {
     handleEdit(index, rowObj) {
+      let uid = rowObj.id
+      alert(uid)
     },
     handleUserInfo(rel) {
       rel.forEach(item => {
