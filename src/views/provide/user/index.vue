@@ -14,8 +14,17 @@
               <el-option label="9000" value="9000"></el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="Rsa 公钥" :label-width="formLabelWidth">
+            <el-input v-model="form.rsaPub" disabled autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="Rsa 私钥" :label-width="formLabelWidth">
+            <el-input v-model="form.rsaPri" disabled autocomplete="off">
+              <el-button slot="append" icon="el-icon-download" @click="downloadRsaPri(form.rsaPri)"></el-button>
+            </el-input>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
+          <el-button type="warning" @click="addRsaKey" v-if="!form.rsaPub">添加Rsa密钥</el-button>
           <el-button @click="dialogFormVisible = false">取 消</el-button>
           <el-button type="primary" @click="handleAddUser">确 定</el-button>
         </div>
@@ -64,7 +73,9 @@ export default {
         actionType: 'insert',
         user_id: '',
         username: '',
-        money: ''
+        money: '',
+        rsaPub: '',
+        rsaPri: ''
       },
       formLabelWidth: '120px'
     }
@@ -76,6 +87,40 @@ export default {
     this.getUserData()
   },
   methods: {
+    downloadRsaPri(filename) {
+      if (filename.length < 10) {
+        this.$message({
+          type: 'error',
+          message: '没有私钥文件'
+        })
+      } else {
+        window.location.href = 'https://api.meirixindong.com/Static/RsaKey/' + filename
+      }
+    },
+    addRsaKey() {
+      let obj = {
+        'user_id': this.form.user_id
+      }
+      this.$http.post('admin_provide/v1/user/addRsaKey', obj).then(({
+        data: res
+      }) => {
+        if (res.code === 200) {
+          this.$message({
+            type: 'success',
+            message: '操作成功!'
+          })
+          this.getUserData()
+        } else {
+          this.$message({
+            type: 'error',
+            message: res.msg
+          })
+        }
+      }).catch((err) => {
+        console.error(err)
+      })
+      this.dialogFormVisible = false
+    },
     handleClickAddUser() {
       this.form.actionType = 'insert'
       this.form.username = ''
@@ -87,6 +132,8 @@ export default {
       this.form.user_id = rowObj.id
       this.form.username = rowObj.username
       this.form.money = rowObj.money
+      this.form.rsaPub = rowObj.rsaPub
+      this.form.rsaPri = rowObj.rsaPri
       this.dialogFormVisible = true
     },
     handleUserInfo(rel) {
