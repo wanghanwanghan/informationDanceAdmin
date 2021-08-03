@@ -53,7 +53,19 @@
           </el-select>
         </div>
       </div>
-      <div class="middle-content-3"></div>
+      <div class="middle-content-3">
+        <div>
+          <div style="font-size: 14px;margin-bottom: 15px">单个企业价格</div>
+          <el-select v-model="payOneMoneyValue" filterable clearable placeholder="请选择">
+            <el-option
+              v-for="item in payOneMoney"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </div>
+      </div>
       <div class="middle-content-4"></div>
     </div>
     <div class="btn-wrapper">
@@ -108,6 +120,7 @@ export default {
   props: {},
   data() {
     return {
+      payOneMoneyValue: 0,
       uploadUrl: 'https://api.meirixindong.com/admin_provide/v1/finance/uploadEntList',
       tableData: [],
       payEntValue: '',
@@ -122,7 +135,18 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    payOneMoney() {
+      let tmp = []
+      for (let i = 0; i <= 35; i++) {
+        tmp.push({
+          label: i,
+          value: i
+        })
+      }
+      return tmp
+    }
+  },
   mounted() {
     this.getIndex()
   },
@@ -143,11 +167,15 @@ export default {
         this.$message.warning('付费对象必须有一个')
         return
       }
+
+      let allMoney = this.payOneMoneyValue * this.value.length
+
       //发送请求
       let obj = {
         payEntValue: this.payEntValue,
         payUserValue: this.payUserValue,
-        entList: JSON.stringify(this.value)
+        entList: JSON.stringify(this.value),
+        money: allMoney
       }
       this.$http.post('admin_provide/v1/finance/getFinanceData', obj).then(({
         data: res
@@ -202,7 +230,7 @@ export default {
 
 <style lang="scss" scoped>
 ::v-deep .el-transfer-panel {
-  width: 300px !important;
+  width: 300px;
 }
 
 .header-wrapper {
@@ -278,6 +306,9 @@ export default {
   .middle-content-3 {
     width: 25%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-right: 1px solid #EBEEF5;
   }
 
