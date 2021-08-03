@@ -21,8 +21,8 @@
       </div>
       <div class="header-right">
         <div class="checkbox-wrapper">
-          <el-checkbox label="原值" border class="checkbox-item mg-t-15"></el-checkbox>
-          <el-checkbox label="区间" border class="checkbox-item mg-t-15"></el-checkbox>
+          <el-radio v-model="CkRange" label="1" border class="checkbox-item mg-t-15">原值</el-radio>
+          <el-radio v-model="CkRange" label="2" border class="checkbox-item mg-t-15">区间1</el-radio>
         </div>
       </div>
     </div>
@@ -132,7 +132,8 @@ export default {
       value: [],
       filterMethod(query, item) {
         return item.pinyin.indexOf(query) > -1
-      }
+      },
+      CkRange: '1'
     }
   },
   computed: {
@@ -159,6 +160,10 @@ export default {
         this.$message.warning('导出列表是空')
         return
       }
+      if (this.value.length > 15) {
+        this.$message.warning('每次导出最大15家企业')
+        return
+      }
       if (this.payEntValue.length > 0 && this.payUserValue > 0) {
         this.$message.warning('付费对象只能有一个')
         return
@@ -168,14 +173,13 @@ export default {
         return
       }
 
-      let allMoney = this.payOneMoneyValue * this.value.length
-
       //发送请求
       let obj = {
         payEntValue: this.payEntValue,
         payUserValue: this.payUserValue,
         entList: JSON.stringify(this.value),
-        money: allMoney
+        money: this.payOneMoneyValue * this.value.length,
+        CkRange: this.CkRange
       }
       this.$http.post('admin_provide/v1/finance/getFinanceData', obj).then(({
         data: res
