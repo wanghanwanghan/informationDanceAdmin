@@ -95,7 +95,7 @@
         <div class="el-upload__tip" slot="tip">只能处理 模版 文件</div>
       </el-upload>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" size="mini" @click="uploadDialog = false">下载模版</el-button>
+          <el-button type="primary" @click="downFinanceFile">下载模版</el-button>
       </span>
     </el-dialog>
   </div>
@@ -127,6 +127,9 @@ export default {
     this.getIndex()
   },
   methods: {
+    downFinanceFile() {
+      window.location.href = 'https://api.meirixindong.com/Static/financeUploadModel.csv'
+    },
     exportDataBtn() {
       if (this.value.length <= 0) {
         this.$message.warning('导出列表是空')
@@ -158,6 +161,7 @@ export default {
       })
     },
     uploadSuccess(response, file, fileList) {
+      this.uploadDialog = false
       this.data = []
       response.result.forEach(ele => {
         this.data.push({
