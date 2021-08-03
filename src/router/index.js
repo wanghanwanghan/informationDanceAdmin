@@ -113,6 +113,18 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/utils',
+    component: Layout,
+    meta: { title: '工具', icon: 'el-icon-box' },
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/utils/finance/index'),
+        meta: { title: '财务数据', icon: 'el-icon-money' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
