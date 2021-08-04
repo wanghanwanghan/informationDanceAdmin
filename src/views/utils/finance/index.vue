@@ -21,7 +21,7 @@
       </div>
       <div class="header-right">
         <div class="checkbox-wrapper">
-          <el-radio v-model="CkRange" label="1" border class="checkbox-item mg-t-15">原值</el-radio>
+          <el-radio v-model="CkRange" label="1" border class="checkbox-item mg-t-15">脱敏值</el-radio>
           <el-radio v-model="CkRange" label="2" border class="checkbox-item mg-t-15">区间1</el-radio>
         </div>
       </div>
