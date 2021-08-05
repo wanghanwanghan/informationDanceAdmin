@@ -82,11 +82,11 @@
     <div class="table-wrapper">
       <el-table
         :data="tableData"
-        height="500"
+        height="600"
         border
         style="width: 100%">
         <el-table-column fixed width="150" align="center" prop="ENTNAME" label="企业名称"></el-table-column>
-        <el-table-column width="150" align="center" prop="YEAR" label="数据年份"></el-table-column>
+        <el-table-column fixed width="80" align="center" prop="YEAR" label="数据年份"></el-table-column>
         <el-table-column width="150" align="center" prop="ASSGRO" label="资产总额"></el-table-column>
         <el-table-column width="150" align="center" prop="LIAGRO" label="负债总额"></el-table-column>
         <el-table-column width="150" align="center" prop="VENDINC" label="营业总收入"></el-table-column>
