@@ -85,18 +85,22 @@
         height="500"
         border
         style="width: 100%">
-        <el-table-column align="center" prop="YEAR" label="年份"></el-table-column>
-        <el-table-column align="center" prop="ENTNAME" label="企业名称"></el-table-column>
-        <el-table-column align="center" prop="VENDINC" label="营业总收入"></el-table-column>
-        <el-table-column align="center" prop="ASSGRO" label="资产总额"></el-table-column>
-        <el-table-column align="center" prop="LIAGRO" label="负债总额"></el-table-column>
-        <el-table-column align="center" prop="RATGRO" label="纳税总额"></el-table-column>
-        <el-table-column align="center" prop="MAIBUSINC" label="主营业务收入"></el-table-column>
-        <el-table-column align="center" prop="TOTEQU" label="所有者权益"></el-table-column>
-        <el-table-column align="center" prop="PROGRO" label="利润总额"></el-table-column>
-        <el-table-column align="center" prop="NETINC" label="净利润"></el-table-column>
-        <el-table-column align="center" prop="C_ASSGROL" label="净资产"></el-table-column>
-        <el-table-column align="center" prop="SOCNUM" label="社保人数"></el-table-column>
+        <el-table-column fixed width="150" align="center" prop="ENTNAME" label="企业名称"></el-table-column>
+        <el-table-column width="150" align="center" prop="YEAR" label="数据年份"></el-table-column>
+        <el-table-column width="150" align="center" prop="ASSGRO" label="资产总额"></el-table-column>
+        <el-table-column width="150" align="center" prop="LIAGRO" label="负债总额"></el-table-column>
+        <el-table-column width="150" align="center" prop="VENDINC" label="营业总收入"></el-table-column>
+        <el-table-column width="150" align="center" prop="MAIBUSINC" label="主营业务收入"></el-table-column>
+        <el-table-column width="150" align="center" prop="PROGRO" label="利润总额"></el-table-column>
+        <el-table-column width="150" align="center" prop="NETINC" label="净利润"></el-table-column>
+        <el-table-column width="150" align="center" prop="RATGRO" label="纳税总额"></el-table-column>
+        <el-table-column width="150" align="center" prop="TOTEQU" label="所有者权益"></el-table-column>
+        <el-table-column width="150" align="center" prop="SOCNUM" label="社保人数"></el-table-column>
+        <el-table-column width="150" align="center" prop="C_ASSGROL" label="净资产"></el-table-column>
+        <el-table-column width="150" align="center" prop="A_ASSGROL" label="平均资产总额"></el-table-column>
+        <el-table-column width="150" align="center" prop="CA_ASSGRO" label="平均净资产"></el-table-column>
+        <el-table-column width="150" align="center" prop="A_VENDINCL" label="企业人均产值"></el-table-column>
+        <el-table-column width="150" align="center" prop="A_PROGROL" label="企业人均盈利"></el-table-column>
       </el-table>
     </div>
     <el-dialog
