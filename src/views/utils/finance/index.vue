@@ -16,6 +16,12 @@
               size="small"
               @click="uploadDialog = true">上传名单
             </el-button>
+            <el-button
+              class="transfer-footer"
+              slot="left-footer"
+              size="small"
+              @click="inputOneDialog = true">添加企业
+            </el-button>
           </el-transfer>
         </div>
       </div>
@@ -79,7 +85,7 @@
         height="500"
         border
         style="width: 100%">
-        <el-table-column align="center" prop="YEAR" label="数据年份"></el-table-column>
+        <el-table-column align="center" prop="YEAR" label="年份"></el-table-column>
         <el-table-column align="center" prop="ENTNAME" label="企业名称"></el-table-column>
         <el-table-column align="center" prop="VENDINC" label="营业总收入"></el-table-column>
         <el-table-column align="center" prop="ASSGRO" label="资产总额"></el-table-column>
@@ -89,6 +95,7 @@
         <el-table-column align="center" prop="TOTEQU" label="所有者权益"></el-table-column>
         <el-table-column align="center" prop="PROGRO" label="利润总额"></el-table-column>
         <el-table-column align="center" prop="NETINC" label="净利润"></el-table-column>
+        <el-table-column align="center" prop="C_ASSGROL" label="净资产"></el-table-column>
         <el-table-column align="center" prop="SOCNUM" label="社保人数"></el-table-column>
       </el-table>
     </div>
@@ -110,6 +117,19 @@
           <el-button type="primary" @click="downFinanceFile">下载模版</el-button>
       </span>
     </el-dialog>
+    <el-dialog
+      title=""
+      :visible.sync="inputOneDialog"
+      width="30%">
+      <el-form label-width="80px">
+        <el-form-item label="企业名称">
+          <el-input v-model="inputOneValue"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="addOne">添加</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -128,6 +148,8 @@ export default {
       payUserValue: '',
       payUser: [],
       uploadDialog: false,
+      inputOneDialog: false,
+      inputOneValue: '',
       data: [],
       value: [],
       filterMethod(query, item) {
@@ -152,6 +174,17 @@ export default {
     this.getIndex()
   },
   methods: {
+    addOne() {
+      if (this.inputOneValue.trim().length > 3) {
+        this.data.push({
+          label: this.inputOneValue.trim(),
+          key: this.inputOneValue.trim(),
+          pinyin: 'xxx'
+        })
+      }
+      this.inputOneValue = ''
+      this.inputOneDialog = false
+    },
     downFinanceFile() {
       window.location.href = 'https://api.meirixindong.com/Static/financeUploadModel.csv'
     },
