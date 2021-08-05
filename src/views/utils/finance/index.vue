@@ -101,6 +101,21 @@
         <el-table-column width="150" align="center" prop="CA_ASSGRO" label="平均净资产"></el-table-column>
         <el-table-column width="150" align="center" prop="A_VENDINCL" label="企业人均产值"></el-table-column>
         <el-table-column width="150" align="center" prop="A_PROGROL" label="企业人均盈利"></el-table-column>
+        <el-table-column width="150" align="center" prop="C_INTRATESL" label="净利率"></el-table-column>
+        <el-table-column width="150" align="center" prop="ATOL" label="资产周转率"></el-table-column>
+        <el-table-column width="150" align="center" prop="ASSGRO_C_INTRATESL" label="总资产净利率"></el-table-column>
+        <el-table-column width="150" align="center" prop="ROAL" label="总资产回报率"></el-table-column>
+        <el-table-column width="150" align="center" prop="ROE_AL" label="净资产回报率A"></el-table-column>
+        <el-table-column width="150" align="center" prop="ROE_BL" label="净资产回报率B"></el-table-column>
+        <el-table-column width="150" align="center" prop="DEBTL" label="资产负债率"></el-table-column>
+        <el-table-column width="150" align="center" prop="EQUITYL" label="权益乘数"></el-table-column>
+        <el-table-column width="150" align="center" prop="MAIBUSINC_RATIOL" label="主营业务比率"></el-table-column>
+        <el-table-column width="150" align="center" prop="NALR" label="净资产负债率"></el-table-column>
+        <el-table-column width="150" align="center" prop="OPM" label="营业利润率"></el-table-column>
+        <el-table-column width="150" align="center" prop="ROCA" label="资本保值增值率"></el-table-column>
+        <el-table-column width="150" align="center" prop="NOR" label="营业净利率"></el-table-column>
+        <el-table-column width="150" align="center" prop="PMOTA" label="总资产利润率"></el-table-column>
+        <el-table-column width="150" align="center" prop="TBR" label="税收负担率"></el-table-column>
       </el-table>
     </div>
     <el-dialog
