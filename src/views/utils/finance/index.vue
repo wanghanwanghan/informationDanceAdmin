@@ -180,7 +180,7 @@ export default {
   computed: {
     payOneMoney() {
       let tmp = []
-      for (let i = 0; i <= 35; i++) {
+      for (let i = 0; i <= 100; i++) {
         tmp.push({
           label: i,
           value: i
