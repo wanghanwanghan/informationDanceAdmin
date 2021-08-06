@@ -119,9 +119,14 @@ export const constantRoutes = [
     meta: { title: '工具', icon: 'el-icon-box' },
     children: [
       {
-        path: 'index',
+        path: 'finance',
         component: () => import('@/views/utils/finance/index'),
         meta: { title: '财务数据', icon: 'el-icon-money' }
+      },
+      {
+        path: 'transmission',
+        component: () => import('@/views/utils/transmission/index'),
+        meta: { title: '文件传输', icon: 'el-icon-folder' }
       }
     ]
   },
