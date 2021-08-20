@@ -127,6 +127,11 @@ export const constantRoutes = [
         path: 'transmission',
         component: () => import('@/views/utils/transmission/index'),
         meta: { title: '文件传输', icon: 'el-icon-folder' }
+      },
+      {
+        path: 'invoice',
+        component: () => import('@/views/utils/invoice/index'),
+        meta: { title: '发票授权', icon: 'el-icon-notebook-2' }
       }
     ]
   },
