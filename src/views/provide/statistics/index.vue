@@ -1,8 +1,63 @@
 <template>
   <div>
+    <div class="search-cond-wrapper">
+      <div class="search-left">
+        <el-form ref="form" :model="form" label-width="90px">
+          <el-form-item label="用户名称">
+            <el-select
+              v-model="form.username"
+              filterable
+              clearable
+              @change="username_change"
+              :style="{width:'300px'}">
+              <el-option
+                v-for="item in form.user_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="接口名称">
+            <el-select
+              v-model="form.apiname"
+              filterable
+              clearable
+              @change="apiname_change"
+              :loading="loading"
+              :style="{width:'300px'}">
+              <el-option
+                v-for="item in form.api_options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="时间范围">
+            <el-date-picker
+              :style="{width:'300px'}"
+              value-format="yyyy-MM-dd"
+              @change="date_change"
+              v-model="date"
+              type="daterange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="export_csv">立即导出</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="search-right">
+      </div>
+    </div>
     <el-table
       :data="tableData"
-      style="width: 100%">
+      style="width: 100%"
+      height="400">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-form label-position="left" inline class="demo-table-expand">
@@ -72,13 +127,21 @@ import { parseTime } from '@/utils'
 export default {
   name: '',
   components: {},
-  // filters: {},
   props: {},
-  // provide() {
-  //   return {}
-  // },
   data() {
     return {
+      loading: false,
+      multipleSelection: [],
+      form: {
+        username: '',
+        user_options: [],
+        apiname: '',
+        api_options: [],
+        date: '',
+        uid: '',
+        aid: ''
+      },
+      date: '',
       tableData: [],
       elPagination: {
         page: 1,
@@ -89,40 +152,32 @@ export default {
       jsonData: {}
     }
   },
-  // inject: [],
   computed: {},
-  // watch: {},
   mounted() {
     this.pageChange(1)
   },
-  // beforeCreate() {
-  // },
-  // created() {
-  // },
-  // beforeMount() {
-  // },
-  // beforeUpdate() {
-  // },
-  // updated() {
-  // },
-  // beforeDestroy() {
-  // },
-  // destroyed() {
-  // },
-  // activated() {
-  // },
-  // deactivated() {
-  // },
   methods: {
+    export_csv() {
+      this.$http.post('admin_provide/v1/statistics/exportCsv', this.form).then(({
+        data: res
+      }) => {
+        window.location.href = 'https://api.meirixindong.com/Static/Temp/' + res.result.filename
+      }).catch((err) => {
+
+      })
+    },
+    date_change() {
+      this.form.date = this.date[0] + '|||' + this.date[1]
+      this.pageChange(1)
+    },
     handleRespDetail(resp) {
       this.dialogVisible = true
       this.jsonData = JSON.parse(resp)
     },
     pageChange(index) {
-      let obj = {
-        page: index,
-        pageSize: this.elPagination.pageSize
-      }
+      let obj = this.form
+      obj.page = index
+      obj.pageSize = this.elPagination.pageSize
       this.$http.post('admin_provide/v1/statistics/getStatisticsList', obj).then(({
         data: res
       }) => {
@@ -131,12 +186,35 @@ export default {
           item.created_at = parseTime(item.created_at)
         })
         this.elPagination.total = res.paging.total
+        //ext里的
+        this.form.user_options = []
+        res.ext.user_info.forEach(ele => {
+          this.form.user_options.push({
+            label: ele.username,
+            value: ele.id
+          })
+        })
+        this.form.api_options = []
+        res.ext.api_info.forEach(ele => {
+          this.form.api_options.push({
+            label: ele.name + ' - ' + ele.source,
+            value: ele.id
+          })
+        })
       }).catch((err) => {
 
       })
     },
     handleClose(done) {
       this.dialogVisible = false
+    },
+    username_change(index) {
+      this.form.uid = index
+      this.pageChange(1)
+    },
+    apiname_change(index) {
+      this.form.aid = index
+      this.pageChange(1)
     }
   }
 }
@@ -157,6 +235,21 @@ export default {
   margin-right: 0;
   margin-bottom: 0;
   width: 50%;
+}
+
+.search-cond-wrapper {
+  margin-top: 14px;
+  border-bottom: 1px solid #EBEEF5;
+  width: 100%;
+  display: flex;
+
+  .search-left {
+    width: 50%;
+  }
+
+  .search-right {
+    flex: 1;
+  }
 }
 
 .my-paginate {
