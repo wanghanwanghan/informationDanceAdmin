@@ -88,12 +88,12 @@
           </el-form>
         </template>
       </el-table-column>
-      <el-table-column label="接口路径" prop="path" width="350px"></el-table-column>
-      <el-table-column label="接口名称" prop="name"></el-table-column>
-      <el-table-column label="接口描述" prop="desc"></el-table-column>
-      <el-table-column label="用户名称" prop="username"></el-table-column>
-      <el-table-column label="请求时间" prop="created_at"></el-table-column>
-      <el-table-column label="返回值" prop="responseCode"></el-table-column>
+      <el-table-column label="接口路径" align="center" prop="path" width="350px"></el-table-column>
+      <el-table-column label="接口名称" align="center" prop="name"></el-table-column>
+      <el-table-column label="接口描述" align="center" prop="desc"></el-table-column>
+      <el-table-column label="用户名称" align="center" prop="username"></el-table-column>
+      <el-table-column label="请求时间" align="center" prop="created_at"></el-table-column>
+      <el-table-column label="返回值" align="center" prop="responseCode"></el-table-column>
     </el-table>
     <div class="my-paginate">
       <el-pagination
