@@ -19,42 +19,42 @@
       <el-table-column prop="desc" label="描述"></el-table-column>
       <el-table-column prop="price" label="成本价" width="100"></el-table-column>
       <el-table-column prop="custPrice" label="用户价" width="100"></el-table-column>
-<!--      <el-table-column prop="source" label="数据源" width="100"></el-table-column>-->
+      <el-table-column prop="source" label="数据源" width="100"></el-table-column>
       <el-table-column label="操作" width="100">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click.stop="handleEdit(scope.row)">编辑</el-button>
-          <el-dialog title="" :visible.sync="dialogFormVisible">
-            <el-form :model="form">
-              <el-form-item label="接口id" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.id"></el-input>
-              </el-form-item>
-              <el-form-item label="路径" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.path"></el-input>
-              </el-form-item>
-              <el-form-item label="名称" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.name"></el-input>
-              </el-form-item>
-              <el-form-item label="描述" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.desc"></el-input>
-              </el-form-item>
-              <el-form-item label="成本价" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.price"></el-input>
-              </el-form-item>
-              <el-form-item label="用户价" :label-width="formLabelWidth">
-                <el-input v-model="form.custPrice"></el-input>
-              </el-form-item>
-              <el-form-item label="数据源" :label-width="formLabelWidth">
-                <el-input disabled v-model="form.source"></el-input>
-              </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">取 消</el-button>
-              <el-button type="primary" @click="handleEditBtn">确 定</el-button>
-            </div>
-          </el-dialog>
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog title="" :visible.sync="dialogFormVisible">
+      <el-form :model="form">
+        <el-form-item label="接口id" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.id"></el-input>
+        </el-form-item>
+        <el-form-item label="路径" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.path"></el-input>
+        </el-form-item>
+        <el-form-item label="名称" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="描述" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.desc"></el-input>
+        </el-form-item>
+        <el-form-item label="成本价" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.price"></el-input>
+        </el-form-item>
+        <el-form-item label="用户价" :label-width="formLabelWidth">
+          <el-input v-model="form.custPrice"></el-input>
+        </el-form-item>
+        <el-form-item label="数据源" :label-width="formLabelWidth">
+          <el-input disabled v-model="form.source"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="handleEditBtn">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 

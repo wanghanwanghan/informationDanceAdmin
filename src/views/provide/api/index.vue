@@ -58,7 +58,7 @@
       <el-table-column prop="path" label="地址" width="350"></el-table-column>
       <el-table-column prop="name" label="名称" width="250"></el-table-column>
       <el-table-column prop="desc" label="描述" width="200"></el-table-column>
-<!--      <el-table-column prop="source" label="数据源" width="100"></el-table-column>-->
+      <el-table-column prop="source" label="数据源" width="100"></el-table-column>
       <el-table-column prop="price" label="成本（元）" width="100"></el-table-column>
       <el-table-column prop="status" label="状态" width="65"></el-table-column>
       <el-table-column prop="apiDoc" label="文档" width="65">
@@ -70,63 +70,63 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click.stop="handleEdit(scope.row)">编辑</el-button>
-          <el-dialog title="" :visible.sync="dialogFormVisible2">
-            <el-form :model="form2">
-              <el-form-item label="接口id" :label-width="formLabelWidth">
-                <el-input disabled v-model="form2.id"></el-input>
-              </el-form-item>
-              <el-form-item label="路径" :label-width="formLabelWidth">
-                <el-input v-model="form2.path"></el-input>
-              </el-form-item>
-              <el-form-item label="名称" :label-width="formLabelWidth">
-                <el-input v-model="form2.name"></el-input>
-              </el-form-item>
-              <el-form-item label="描述" :label-width="formLabelWidth">
-                <el-input v-model="form2.desc"></el-input>
-              </el-form-item>
-              <el-form-item label="成本价" :label-width="formLabelWidth">
-                <el-input v-model="form2.price"></el-input>
-              </el-form-item>
-              <el-form-item label="状态" :label-width="formLabelWidth">
-                <el-select v-model="form2.status" placeholder="请选择状态">
-                  <el-option label="启用" value="启用"></el-option>
-                  <el-option label="停用" value="停用"></el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item label="数据源" :label-width="formLabelWidth">
-                <el-input disabled v-model="form2.source"></el-input>
-              </el-form-item>
-              <el-form-item label="创建时间" :label-width="formLabelWidth">
-                <el-input disabled v-model="form2.created_at"></el-input>
-              </el-form-item>
-              <el-form-item label="修改时间" :label-width="formLabelWidth">
-                <el-input disabled v-model="form2.updated_at"></el-input>
-              </el-form-item>
-              <el-form-item label="api文档" :label-width="formLabelWidth">
-                <el-input disabled v-model="form2.apiDoc"></el-input>
-                <el-upload
-                  class="upload-demo upload-ext"
-                  ref="upload2"
-                  action="https://api.meirixindong.com/api/v1/comm/file/upload"
-                  :on-preview="handlePreview2"
-                  :on-remove="handleRemove2"
-                  :on-success="handleSuccess2"
-                  :file-list="fileList2"
-                  :auto-upload="false">
-                  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-                  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload2">上传到服务器
-                  </el-button>
-                </el-upload>
-              </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible2 = false">取 消</el-button>
-              <el-button type="primary" @click="handleEditBtn">确 定</el-button>
-            </div>
-          </el-dialog>
         </template>
       </el-table-column>
     </el-table>
+    <el-dialog title="" :visible.sync="dialogFormVisible2">
+      <el-form :model="form2">
+        <el-form-item label="接口id" :label-width="formLabelWidth">
+          <el-input disabled v-model="form2.id"></el-input>
+        </el-form-item>
+        <el-form-item label="路径" :label-width="formLabelWidth">
+          <el-input v-model="form2.path"></el-input>
+        </el-form-item>
+        <el-form-item label="名称" :label-width="formLabelWidth">
+          <el-input v-model="form2.name"></el-input>
+        </el-form-item>
+        <el-form-item label="描述" :label-width="formLabelWidth">
+          <el-input v-model="form2.desc"></el-input>
+        </el-form-item>
+        <el-form-item label="成本价" :label-width="formLabelWidth">
+          <el-input v-model="form2.price"></el-input>
+        </el-form-item>
+        <el-form-item label="状态" :label-width="formLabelWidth">
+          <el-select v-model="form2.status" placeholder="请选择状态">
+            <el-option label="启用" value="启用"></el-option>
+            <el-option label="停用" value="停用"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="数据源" :label-width="formLabelWidth">
+          <el-input disabled v-model="form2.source"></el-input>
+        </el-form-item>
+        <el-form-item label="创建时间" :label-width="formLabelWidth">
+          <el-input disabled v-model="form2.created_at"></el-input>
+        </el-form-item>
+        <el-form-item label="修改时间" :label-width="formLabelWidth">
+          <el-input disabled v-model="form2.updated_at"></el-input>
+        </el-form-item>
+        <el-form-item label="api文档" :label-width="formLabelWidth">
+          <el-input disabled v-model="form2.apiDoc"></el-input>
+          <el-upload
+            class="upload-demo upload-ext"
+            ref="upload2"
+            action="https://api.meirixindong.com/api/v1/comm/file/upload"
+            :on-preview="handlePreview2"
+            :on-remove="handleRemove2"
+            :on-success="handleSuccess2"
+            :file-list="fileList2"
+            :auto-upload="false">
+            <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+            <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload2">上传到服务器
+            </el-button>
+          </el-upload>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible2 = false">取 消</el-button>
+        <el-button type="primary" @click="handleEditBtn">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
