@@ -30,6 +30,7 @@
           <el-radio v-model="CkRange" label="1" border class="checkbox-item mg-t-15">脱敏值</el-radio>
           <el-radio v-model="CkRange" label="2" border class="checkbox-item mg-t-15">区间1</el-radio>
           <el-radio v-model="CkRange" label="3" border class="checkbox-item mg-t-15">区间2</el-radio>
+          <el-radio v-model="CkRange" label="4" border class="checkbox-item mg-t-15">永泰</el-radio>
         </div>
       </div>
     </div>

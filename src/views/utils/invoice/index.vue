@@ -61,6 +61,13 @@
               <el-form-item label="授权书文件">
                 <el-button type="success" size="mini" plain @click="showAuthBook(props.row.filePath)">查看授权书</el-button>
               </el-form-item>
+              <el-form-item label="上次取数">
+                <span>{{ props.row.lastReqTime }}</span>
+              </el-form-item>
+              <el-form-item label="上次oss">
+                <el-button type="success" size="mini" plain @click="showOssUrl(props.row.lastReqUrl)">下载上次数据
+                </el-button>
+              </el-form-item>
             </el-form>
           </template>
         </el-table-column>
@@ -72,7 +79,7 @@
         <el-table-column
           align="center"
           label="企业名称"
-          width="220"
+          width="300"
           prop="entName">
         </el-table-column>
         <el-table-column
@@ -83,22 +90,22 @@
         </el-table-column>
         <el-table-column
           align="center"
-          label="发起授权时间"
+          label="发起授权"
           prop="requestDate">
         </el-table-column>
         <el-table-column
           align="center"
-          label="授权书生成时间"
+          label="授权书生成"
           prop="authDate">
         </el-table-column>
         <el-table-column
           align="center"
-          label="发出授权书时间"
+          label="发出授权书"
           prop="sendDate">
         </el-table-column>
         <el-table-column
           align="center"
-          label="可以取数时间"
+          label="可以取数"
           prop="canGetDataDate">
         </el-table-column>
       </el-table>
@@ -138,6 +145,9 @@ export default {
   methods: {
     showAuthBook(file) {
       window.location.href = 'https://api.meirixindong.com/Static/InvAuth/' + file
+    },
+    showOssUrl(url) {
+      window.location.href = url
     },
     checkboxGroupChange() {
       this.form.status = []
@@ -184,6 +194,7 @@ export default {
             ele.created_at = parseTime(ele.created_at, '{y}-{m}-{d}')
             ele.updated_at = parseTime(ele.updated_at, '{y}-{m}-{d}')
             ele.canGetDataDate = parseTime(ele.canGetDataDate, '{y}-{m}-{d}')
+            ele.lastReqTime = parseTime(ele.lastReqTime)
             this.sel_options.push({
               label: ele.entName,
               value: ele.entName
