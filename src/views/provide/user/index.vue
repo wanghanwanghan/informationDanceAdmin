@@ -15,7 +15,9 @@
             </el-select>
           </el-form-item>
           <el-form-item label="Rsa 公钥" :label-width="formLabelWidth">
-            <el-input v-model="form.rsaPub" disabled autocomplete="off"></el-input>
+            <el-input v-model="form.rsaPub" disabled autocomplete="off">
+              <el-button slot="append" icon="el-icon-download" @click="downloadRsaPri(form.rsaPub)"></el-button>
+            </el-input>
           </el-form-item>
           <el-form-item label="Rsa 私钥" :label-width="formLabelWidth">
             <el-input v-model="form.rsaPri" disabled autocomplete="off">
@@ -91,7 +93,7 @@ export default {
       if (filename.length < 10) {
         this.$message({
           type: 'error',
-          message: '没有私钥文件'
+          message: '没有秘钥文件'
         })
       } else {
         window.location.href = 'https://api.meirixindong.com/Static/RsaKey/' + filename
