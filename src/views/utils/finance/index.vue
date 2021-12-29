@@ -108,12 +108,12 @@
         <el-table-column width="150" align="center" prop="ASSGRO_C_INTRATESL" label="总资产净利率"></el-table-column>
         <el-table-column width="150" align="center" prop="ROAL" label="总资产回报率"></el-table-column>
         <el-table-column width="150" align="center" prop="ROE_AL" label="净资产回报率A"></el-table-column>
-        <el-table-column width="150" align="center" prop="ROE_BL" label="净资产回报率B"></el-table-column>
+<!--        <el-table-column width="150" align="center" prop="ROE_BL" label="净资产回报率B"></el-table-column>-->
         <el-table-column width="150" align="center" prop="DEBTL" label="资产负债率"></el-table-column>
         <el-table-column width="150" align="center" prop="EQUITYL" label="权益乘数"></el-table-column>
-        <el-table-column width="150" align="center" prop="MAIBUSINC_RATIOL" label="主营业务比率"></el-table-column>
+<!--        <el-table-column width="150" align="center" prop="MAIBUSINC_RATIOL" label="主营业务比率"></el-table-column>-->
         <el-table-column width="150" align="center" prop="NALR" label="净资产负债率"></el-table-column>
-        <el-table-column width="150" align="center" prop="OPM" label="营业利润率"></el-table-column>
+<!--        <el-table-column width="150" align="center" prop="OPM" label="营业利润率"></el-table-column>-->
         <el-table-column width="150" align="center" prop="ROCA" label="资本保值增值率"></el-table-column>
         <el-table-column width="150" align="center" prop="NOR" label="营业净利率"></el-table-column>
         <el-table-column width="150" align="center" prop="PMOTA" label="总资产利润率"></el-table-column>
@@ -126,16 +126,16 @@
         <el-table-column width="150" align="center" prop="PROGRO_yoy" label="利润总额同比"></el-table-column>
         <el-table-column width="150" align="center" prop="NETINC_yoy" label="净利润同比"></el-table-column>
         <el-table-column width="150" align="center" prop="RATGRO_yoy" label="纳税总额同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="TOTEQU_yoy" label="所有者权益同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="SOCNUM_yoy" label="社保人数同比"></el-table-column>
+<!--        <el-table-column width="150" align="center" prop="TOTEQU_yoy" label="所有者权益同比"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="SOCNUM_yoy" label="社保人数同比"></el-table-column>-->
         <el-table-column width="150" align="center" prop="C_ASSGROL_yoy" label="净资产同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="A_ASSGROL_yoy" label="平均资产总额同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="CA_ASSGROL_yoy" label="平均净资产同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="A_VENDINCL_yoy" label="企业人均产值同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="A_PROGROL_yoy" label="企业人均盈利同比"></el-table-column>
-        <el-table-column width="150" align="center" prop="VENDINC_CGR" label="营业总收入复合增速（两年）"></el-table-column>
-        <el-table-column width="150" align="center" prop="VENDINC_yoy_ave_2" label="营业总收入同比的平均（两年）"></el-table-column>
-        <el-table-column width="150" align="center" prop="NETINC_yoy_ave_2" label="净利润同比的平均（两年）"></el-table-column>
+<!--        <el-table-column width="150" align="center" prop="A_ASSGROL_yoy" label="平均资产总额同比"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="CA_ASSGROL_yoy" label="平均净资产同比"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="A_VENDINCL_yoy" label="企业人均产值同比"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="A_PROGROL_yoy" label="企业人均盈利同比"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="VENDINC_CGR" label="营业总收入复合增速（两年）"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="VENDINC_yoy_ave_2" label="营业总收入同比的平均（两年）"></el-table-column>-->
+<!--        <el-table-column width="150" align="center" prop="NETINC_yoy_ave_2" label="净利润同比的平均（两年）"></el-table-column>-->
         <el-table-column width="150" align="center" prop="NPMOMB" label="主营业务净利润率"></el-table-column>
       </el-table>
     </div>
