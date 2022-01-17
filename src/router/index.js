@@ -135,6 +135,17 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/log',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/log/index'),
+        meta: { title: '日志查询', icon: 'table' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
