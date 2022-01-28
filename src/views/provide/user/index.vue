@@ -8,11 +8,7 @@
             <el-input v-model="form.username" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="金额" :label-width="formLabelWidth">
-            <el-select v-model="form.money" placeholder="请选择金额">
-              <el-option label="1000" value="1000"></el-option>
-              <el-option label="3000" value="3000"></el-option>
-              <el-option label="9000" value="9000"></el-option>
-            </el-select>
+            <el-input v-model="form.money" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="Rsa 公钥" :label-width="formLabelWidth">
             <el-input v-model="form.rsaPub" disabled autocomplete="off">
@@ -178,10 +174,6 @@ export default {
         data: res
       }) => {
         if (res.code === 200) {
-          this.$message({
-            type: 'success',
-            message: '操作成功!'
-          })
           this.tableData = this.handleUserInfo(res.result)
         } else {
           this.$message({
