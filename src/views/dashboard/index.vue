@@ -10,7 +10,9 @@ export default {
   components: {},
   props: {},
   data() {
-    return {}
+    return {
+      items: []
+    }
   },
   computed: {},
   mounted() {
