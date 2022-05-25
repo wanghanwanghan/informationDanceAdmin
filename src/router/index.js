@@ -132,6 +132,11 @@ export const constantRoutes = [
         path: 'invoice',
         component: () => import('@/views/utils/invoice/index'),
         meta: { title: '发票授权', icon: 'el-icon-notebook-2' }
+      },
+      {
+        path: 'zhaotoubiao',
+        component: () => import('@/views/utils/zhaotoubiao/index'),
+        meta: { title: '会客招投标', icon: 'el-icon-notebook-2' }
       }
     ]
   },
