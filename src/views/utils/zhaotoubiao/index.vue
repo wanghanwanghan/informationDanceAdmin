@@ -52,28 +52,30 @@
         <el-table-column
           align="center"
           label="标题"
-          width="300"
           prop="标题">
         </el-table-column>
         <el-table-column
           align="center"
           label="公告日期"
-          width="220"
+          width="100"
           prop="公告日期">
         </el-table-column>
         <el-table-column
           align="center"
           label="公告类型"
+          width="100"
           prop="公告类型2">
         </el-table-column>
         <el-table-column
           align="center"
           label="中标金额"
+          width="150"
           prop="中标金额">
         </el-table-column>
         <el-table-column
           align="center"
           label="更新时间"
+          width="150"
           prop="updated_at">
         </el-table-column>
       </el-table>
